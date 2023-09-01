@@ -1,10 +1,26 @@
-version: '3'
+version: "3.8"
+
 services:
-  nodejs:
-    image: node:20-alpine3.17
+  web:
+    image: 20-alpine3.17
+    restart: always
+    depends_on:
+      - mongodb
+    networks:
+      - soln-network
   mongodb:
     image: mongo:latest
-    ports:
-      - "27017:27017"
+    restart: always
     volumes:
-      -soln-data
+      - soln_data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - soln-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=tidvn
+      - MONGO_INITDB_ROOT_PASSWORD=Passwd
+networks:
+  soln-network:
+volumes:
+  soln_data:
