@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  nuxt:
+    image: node:20-alpine
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    networks:
+      - soln-network
+  mongodb:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - soln-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=tidvn
+      - MONGO_INITDB_ROOT_PASSWORD=@passwd
+networks:
+  soln-network:
+volumes:
+  mongodb_data:
