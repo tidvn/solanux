@@ -3,7 +3,6 @@ version: "3.8"
 services:
   nodejs:
     image: node:20-alpine
-    restart: unless-stopped
     depends_on:
       - mongodb
     networks:
