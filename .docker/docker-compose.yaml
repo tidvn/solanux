@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   web:
-    image: 20-alpine
+    image: node:20-alpine
     restart: always
     depends_on:
       - mongodb
