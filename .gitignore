@@ -1,6 +1,7 @@
 /.nuxt
 /.output
 /node_modules
-
-.gitignore
+/compose-dev.yaml
+/package-lock.json
+/yarn.lock
 README.md
